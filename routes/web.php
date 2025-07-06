@@ -1,10 +1,23 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::middleware(['web'])->group(function() {
 
-Route::get('/',[adminController::class,'index'])->name('login');
-Route::get('/add/employee',[adminController::class,'addEmployee'])->name('add.employee');
-Route::post('/store/employee',[adminController::class,'storeEmployee'])->name('store.employee');
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/', 'index')->name('login');
+        Route::post('/login', 'login')->name('login.submit');
+        Route::post('/logout','logout')->name('logout');
+    });
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+
+});
+
