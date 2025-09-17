@@ -27,3 +27,5 @@ services:
 databases:
   - name: attendance-db
     plan: free
+    databaseName: attendance
+    user: attendance
