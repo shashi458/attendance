@@ -4,8 +4,6 @@ services:
     env: docker
     plan: free
     autoDeploy: true
-    buildCommand: ""
-    startCommand: ""
     envVars:
       - key: APP_ENV
         value: production
