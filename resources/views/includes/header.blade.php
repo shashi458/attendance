@@ -1,11 +1,11 @@
 <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-start">
     <!-- Logo -->
-    <a href="{{ asset('images/image.png') }}" class="logo">
+    <a href="{{ asset('images/logo.jpg') }}" class="logo">
         <!-- logo -->
         <div class="logo-lg">
-            <span class="light-logo"><img src="" alt="logo" style="height: 50px; width:80px;"></span>
-            <span class="dark-logo"><img src="" alt="logo"></span>
+            <span class="light-logo"><img src="{{ asset('images/logo.jpg') }}" alt="logo" style="height: 50px; width:80px;"></span>
+            <span class="dark-logo"><img src="{{ asset('images/logo.jpg') }}" alt="logo"></span>
         </div>
     </a>
     <!-- Authenticated User Name -->
