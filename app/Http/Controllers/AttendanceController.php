@@ -21,6 +21,9 @@ class AttendanceController extends Controller
     //     return view('attendance.add', compact('employees'));
     // }
 
+
+
+
     public function create()
 {
     $employees = Employee::all();
@@ -32,6 +35,18 @@ class AttendanceController extends Controller
     return view('attendance.add', compact('employees', 'attendances'));
 }
 
+// public function createEmployee($employeeId = null)
+// {
+//     $employees = Employee::all();
+//     $today = date('Y-m-d');
+
+//     $attendances = Attendance::where('date', $today)->get()->keyBy('employee_id');
+
+//     // Pre-select employee if passed
+//     $selectedEmployee = $employeeId ? Employee::find($employeeId) : null;
+
+//     return view('attendance.add', compact('employees', 'attendances', 'selectedEmployee'));
+// }
 
     public function store(Request $request)
 {

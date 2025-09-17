@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\ReportController;
@@ -22,13 +23,14 @@ Route::middleware(['web'])->group(function () {
             return view('dashboard');
         })->name('dashboard');
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
     Route::controller(EmployeeController::class)->group(function () {
         Route::get('/employee', 'index')->name('employee');
         Route::get('/add-employee', 'add')->name('employee.add');
         Route::post('/employee/store', 'store')->name('employee.store');
-        // Route::get('/employee/{id}/edit', [App\Http\Controllers\EmployeeController::class, 'edit'])->name('employee.edit');
-        // Route::post('/employee/{id}/update', [App\Http\Controllers\EmployeeController::class, 'update'])->name('employee.update');
-        // Route::delete('/employee/{id}', [App\Http\Controllers\EmployeeController::class, 'destroy'])->name('employee.destroy');
         Route::get('/employee/{id}', 'edit')->name('employee.edit');
         Route::post('/employee/{id}/update', 'update')->name('employee.update');
         Route::delete('/employee/{id}', 'destroy')->name('employee.destroy');
@@ -41,7 +43,11 @@ Route::middleware(['web'])->group(function () {
     Route::controller(AttendanceController::class)->group(function () {
         Route::get('/attendance', 'index')->name('attendance.index');
         Route::get('/attendance/create', 'create')->name('attendance.create');
+    //     Route::get('/attendance/create/{employee}', [AttendanceController::class, 'createEmployee'])
+    // ->name('attendance.create.withEmployee');
+
         Route::post('/attendance/store', 'store')->name('attendance.store');
+
     });
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
